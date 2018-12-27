@@ -1,27 +1,12 @@
 package th.in.streetfood.elderlyapp;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
 
-import org.apache.cordova.DroidGap;
-
-public class MainActivity extends DroidGap {
-
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        MainActivity.super.setIntegerProperty("splashscreen", R.drawable.logo);
-//        MainActivity.super.onMessage("splashscreen",R.drawable.logo);
-//        MainActivity.super.setIntegerProperty("backgroundColor", Integer.parseInt("#3F51B5".replaceFirst("^#",""), 16));
-//        MainActivity.super.loadUrl("http://tayaitourism.com");
-//        MainActivity.super.onMessage("splashscreen","hide");
-//
-//    }
-
-
+public class Splash extends Activity {
     Handler handler;
     Runnable runnable;
     long delay_time;
@@ -35,8 +20,9 @@ public class MainActivity extends DroidGap {
 
         runnable = new Runnable() {
             public void run() {
-                MainActivity.super.setIntegerProperty("backgroundColor", Integer.parseInt("#3F51B5".replaceFirst("^#", ""), 16));
-                MainActivity.super.loadUrl("http://tayaitourism.com");
+                Intent intent = new Intent(Splash.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         };
     }
@@ -54,4 +40,3 @@ public class MainActivity extends DroidGap {
         time = delay_time - (System.currentTimeMillis() - time);
     }
 }
-
